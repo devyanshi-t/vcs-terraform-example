@@ -1,12 +1,12 @@
 terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 2.65"
+
+     backend "remote" {
+    organization = "demoDT"
+
+    workspaces {
+      name = "vcs-terraform-example"
     }
   }
-
-  required_version = ">= 0.14.9"
 }
 
 
@@ -17,7 +17,7 @@ provider "azurerm" {
 module "cloudinit-example" {
   source  = "devyanshi-t/cloudinit-example/azure"
   version = "1.0.0"
-  location="eastus"
+  location=var.location
 }
 output "pip" {
     value = module.cloudinit-example.public_ip
