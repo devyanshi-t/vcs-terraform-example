@@ -1,5 +1,5 @@
 variable "location" {
     type=string
-    default="eastus"
+    default="westus"
   
 }
